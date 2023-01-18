@@ -1,0 +1,37 @@
+.login-container {
+    text-align: center;
+}
+body {
+    background-color: rgba(238, 242, 230, 0.985);
+}
+.login-box {
+    padding: 10px 30px;
+    border-radius: 5px;
+    background-color: rgba(210, 235, 168, 0.985);
+    position: absolute;
+    top: 35%;
+    display: inline-block;
+    transform: translate(-50%);
+}
+.login-box p {
+    text-align: left;
+    margin: 8px 0px;
+}
+.input-text {
+    display: block;
+    padding: 12px 12px;
+    border-radius: 3px;
+    border: none;
+    margin-bottom: 20px;
+    
+}
+.input-text:focus {
+    outline:none;
+}
+.submit {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+    margin-bottom: 10px;
+}

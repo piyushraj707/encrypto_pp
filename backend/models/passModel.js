@@ -7,7 +7,7 @@ const passwordSchema = new mongoose.Schema({
     },
     URL: String,
     password: String,
-    userID: Number
+    username: String
 })
 
 const password=mongoose.model("password", passwordSchema);
