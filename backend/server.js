@@ -3,6 +3,7 @@ import * as dotenv from "dotenv"
 import mongoose from "mongoose";
 import notes from "./api/notes.js"
 import passwords from "./api/passwords.js"
+import users from "./api/users.js"
 
 dotenv.config()
 const app=express();
@@ -21,7 +22,7 @@ mongoose.connection.once("open", ()=>{
 //link different routes
 app.use("/notes", notes);
 app.use("/passwords", passwords);
-
+app.use("/login", users);
 
 //HomePage interactions
 app.get("/", (req, res) =>  {
