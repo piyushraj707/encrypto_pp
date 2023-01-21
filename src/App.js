@@ -5,12 +5,21 @@ import Login from './components/login';
 import PasswordManager from './components/PasswordManager'
 
 function App() {
-  const [username, setusername] = React.useState(null);
-  if (username) {
-    return <PasswordManager />
+  const [userName, setUserName] = React.useState(null);
+
+  function handleSubmission(val) {
+    setUserName(val);
+  }
+
+  function displayUserName() {
+    console.log(userName);
+  }
+
+  if (userName) {
+    return <PasswordManager displayUserName={displayUserName} />
   }
   else {
-    return <Login />
+    return <Login onSubmission={handleSubmission}/>
   }
 }
 

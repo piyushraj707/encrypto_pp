@@ -1,3 +1,7 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .login-container {
     text-align: center;
 }
@@ -17,18 +21,18 @@ body {
     text-align: left;
     margin: 8px 0px;
 }
-.input-text {
+.input-area {
     display: block;
-    padding: 12px 12px;
+    padding: 8px 12px;
     border-radius: 3px;
     border: none;
     margin-bottom: 20px;
     
 }
-.input-text:focus {
+.input-area:focus {
     outline:none;
 }
-.submit {
+.login-box button {
     padding: 5px;
     border-radius: 5px;
     border: none;
