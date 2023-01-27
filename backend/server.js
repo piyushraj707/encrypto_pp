@@ -9,7 +9,7 @@ import cors from "cors";
 
 dotenv.config()
 const app=express();
-app.use(express.urlencoded());
+app.use(express.json());
 app.use(cors())
 const port=process.env.port;
 const db_url=process.env.DB_URL;

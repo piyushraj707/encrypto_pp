@@ -1,13 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Navbar from "./navbar";
+import PassContainer from "./passcontainer"
+import axios from "axios";
 
 function PasswordManager(props) {
-    function helpdisplay() {
-        props.displayUserName();
-    }
+    const [myData, setData]=useState([]);
+
+    useEffect(()=> {
+        axios
+            .post("http://localhost:5000/passwords/find", {owner: props.owner})
+            .then((res) => setData(res.data));
+    }, [])
+
     return (
         <div>
-            This is the PasswordManager page.
-            <button onClick={helpdisplay} type="submit">Press me to get your username printed</button>
+            <Navbar owner={props.owner}/>
+            {myData.map((info)=>{
+                return (
+                    <PassContainer
+                        title={info.title}
+                        username={info.username}
+                        password={info.password}
+                        url={info.URL}
+                    />
+                )
+            })}
         </div>
     )
 }

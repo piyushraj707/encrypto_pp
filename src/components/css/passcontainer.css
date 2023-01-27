@@ -1,0 +1,32 @@
+.passcontainer {
+    max-width: 50%;
+    margin: 20px auto;
+    background-color: rgba(210, 235, 168, 0.985);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.passname, .passvalue{
+    padding: 5px 15px;
+}
+
+.passvalue div {
+    padding-top: 2px;
+    padding-bottom: 2px; 
+}
+
+.passvalue-items {
+    background-color: rgba(238, 242, 230, 0.985);;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.passvalue-items a {
+    text-decoration: none;
+    font-family: inherit;
+    color: inherit;
+}
+
+.passvalue-items a:hover{
+    text-decoration: underline;
+}

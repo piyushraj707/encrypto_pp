@@ -5,9 +5,11 @@ const passwordSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    URL: String,
+    owner: String,
+    url: String,
     password: String,
-    username: String
+    username: {type: String, required: true},
+    email: {type: String, required: true}
 })
 
 const password=mongoose.model("password", passwordSchema);

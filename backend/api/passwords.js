@@ -17,9 +17,11 @@ router.route("/")
     .post((req,res) => {
         const newPass = new passModel({
             title: req.body.title,
-            URL: req.body.URL,
+            owner: req.body.owner,
+            url: req.body.url,
             password: req.body.password,
-            userID: req.body.userID
+            username: req.body.username,
+            email: req.body.email
         })
         newPass.save(err => {
             if (err) {
@@ -29,6 +31,14 @@ router.route("/")
             else {
                 res.send("You password has successfully been saved!");
             }
+        })
+    })
+
+router.route("/find")
+    .post((req, res) => {
+        passModel.find({owner: req.body.owner}, function (err, data) {
+            res.send(data)
+            console.log("Here is the data for ", req.body.username, data);
         })
     })
 

@@ -1,26 +1,22 @@
 import './App.css';
 import React from 'react';
-import {Switch, Route, Link} from "react-router-dom";
+import { Switch, Route, Link } from "react-router-dom";
 import Login from './components/login';
 import PasswordManager from './components/PasswordManager'
 
 function App() {
-  const [userName, setUserName] = React.useState(null);
+    const [owner, setOwner] = React.useState("piyushraj707");
 
-  function handleSubmission(val) {
-    setUserName(val);
-  }
+    function handleSubmission(val) {
+        setOwner(val);
+    }
 
-  function displayUserName() {
-    console.log(userName);
-  }
-
-  if (userName) {
-    return <PasswordManager displayUserName={displayUserName} />
-  }
-  else {
-    return <Login onSubmission={handleSubmission}/>
-  }
+    if (owner) {
+        return <PasswordManager owner={owner} />
+    }
+    else {
+        return <Login onSubmission={handleSubmission} />
+    }
 }
 
 export default App;

@@ -4,6 +4,7 @@ import userModel from "../models/userModel.js";
 
 router.route("/")
     .post((req, res) => {
+        console.log(req.body)
         const username=req.body.username;
         const password=req.body.password;
         const fName=req.body.fName;

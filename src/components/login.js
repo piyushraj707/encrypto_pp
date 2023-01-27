@@ -1,30 +1,37 @@
 import React from "react";
 import "./css/login.css"
 import axios from "axios";
+import Navbar from "./navbar";
 
 function Login(props) {
-    const [pass, setPass]=React.useState("");
+    const [password, setPass]=React.useState("");
     const [username, setUsername]=React.useState("");
 
     function handleSubmission(event) {
         event.preventDefault();
-        axios.post("http://localhost:5000/login/", {_id: username, password: pass})
-            .then(res=>console.log("Here is the data for logging in: ", res.data));
-        props.onSubmission(username);
+        
+        axios.post("http://localhost:5000/login", {username: username, password: password})
+            .then(res=> {
+                if (res.status===201) props.onSubmission(username);
+                else {
+                    setPass("");
+                    setUsername("");
+                    alert("Please re-try")
+                }
+            })
+            .catch(err=> console.log(err));
     }
     function updateUsername(event) {
-        console.log(username)
         setUsername(event.target.value);
     }
     function updatePassword(event) {
-        console.log(pass)
         setPass(event.target.value);
     }
 
     return (
-        <div onSubmit={handleSubmission} className="login-container">
-            <form method="post" className="login-box">
-
+        <div className="login-container">
+            <Navbar />
+            <form onSubmit={handleSubmission} method="post" className="login-box">
                 <p>Enter your username</p>
                 <input 
                     onChange={updateUsername}
@@ -37,7 +44,7 @@ function Login(props) {
                 <p>Enter your password</p>
                 <input
                     onChange={updatePassword}
-                    value={pass}
+                    value={password}
                     type="password"
                     className="input-area"
                     placeholder="password">
