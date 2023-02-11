@@ -1,0 +1,10 @@
+/* Common css for all pages throught-out the app */
+
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+body {
+    background-color: rgba(238, 242, 230, 0.985);;
+}

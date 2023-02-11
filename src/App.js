@@ -1,21 +1,26 @@
 import './App.css';
 import React from 'react';
-import { Switch, Route, Link } from "react-router-dom";
 import Login from './components/login';
 import PasswordManager from './components/PasswordManager'
+import Register from './components/register';
 
 function App() {
-    const [owner, setOwner] = React.useState("piyushraj707");
+    const [owner, setOwner] = React.useState();
+    const [screen, setScreen] =  React.useState('Login');
 
     function handleSubmission(val) {
         setOwner(val);
+    }
+
+    function changeScreen (page) {
+        setScreen(page);
     }
 
     if (owner) {
         return <PasswordManager owner={owner} />
     }
     else {
-        return <Login onSubmission={handleSubmission} />
+        return (screen==="Login"?<Login changeScreen={changeScreen} onSubmission={handleSubmission} />:<Register changeScreen={changeScreen}></Register>)
     }
 }
 

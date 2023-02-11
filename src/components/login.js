@@ -29,30 +29,34 @@ function Login(props) {
     }
 
     return (
+        <>
+        <Navbar />
         <div className="login-container">
-            <Navbar />
-            <form onSubmit={handleSubmission} method="post" className="login-box">
-                <p>Enter your username</p>
-                <input 
-                    onChange={updateUsername}
-                    value={username}
-                    type="text"
-                    className="input-area"
-                    placeholder="username">
-                </input>
+            <div className="login-box">
+                <form onSubmit={handleSubmission} method="post">
+                    <p>Enter your username</p>
+                    <input 
+                        onChange={updateUsername}
+                        value={username}
+                        type="text"
+                        className="input-area"
+                        placeholder="username">
+                    </input>
 
-                <p>Enter your password</p>
-                <input
-                    onChange={updatePassword}
-                    value={password}
-                    type="password"
-                    className="input-area"
-                    placeholder="password">
-                </input>
-
-                <button type="submit">Create account / Login</button>
-            </form>
+                    <p>Enter your password</p>
+                    <input
+                        onChange={updatePassword}
+                        value={password}
+                        type="password"
+                        className="input-area"
+                        placeholder="password">
+                    </input>
+                    <button type="submit">Login</button>
+                </form>
+                    <button onClick={()=>props.changeScreen("Register")} className="switch-button">Don't have an account?</button>
+            </div>
         </div>
+        </>
     )
 }
 

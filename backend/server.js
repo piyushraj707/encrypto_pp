@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import notes from "./api/notes.js"
 import passwords from "./api/passwords.js"
 import login from "./api/login.js"
-import signup from "./api/signup.js"
+import register from "./api/register.js"
 import cors from "cors";
 
 dotenv.config()
@@ -25,7 +25,7 @@ mongoose.connection.once("open", () => {
 app.use("/notes", notes);
 app.use("/passwords", passwords);
 app.use("/login", login);
-app.use("/signup", signup);
+app.use("/register", register);
 
 //HomePage interactions
 app.get("/", (req, res) =>  {
