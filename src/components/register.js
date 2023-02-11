@@ -34,7 +34,7 @@ function Register(props) {
             alert("Please fill the form fully")
         }
         else if (confPass === password) {
-            axios.post("http://localhost:5000/register", {username: username})
+            axios.get("http://localhost:5000/register", {username: username})
                 .then(res=> {
                     console.log(res)
                     if (res.status===200) {

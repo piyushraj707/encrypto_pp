@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import Navbar from "./navbar";
 import RSA from "./RSA";
@@ -5,8 +6,26 @@ import RSA from "./RSA";
 function Register2 (props) {
     const [dPass, setDPass] = React.useState("")
 
-    function handleSubmission() {
+    function handleSubmission(event) {
+        event.preventDefault();
         const [n, e] = RSA(dPass);
+        const newUser = {
+            fName: props.fName,
+            lName: props.lName,
+            username: props.username,
+            password: props.password,
+            n: n,
+            e: e
+        }
+        console.log("Here is the data to be sent to the backend: ", newUser)
+        axios.post("http://localhost:5000/register", newUser)
+            .then (res => {
+                console.log("successfully posted from regsiter2.js")
+                console.log("Here is the result: ", res)
+            })
+            .catch(err => {
+                console.log("There was an error: ", err)
+            });
         console.log("wow")
     }
     function updateDPass (event) {
