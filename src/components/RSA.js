@@ -16,7 +16,7 @@ function toBigInt (dPass) {
     for (var i=0; i<dPass.length; i++) {
         ans+=toNum(dPass[i])
     }
-    ans=ans+"1";
+    ans=ans+"1"; //make sure that the key is an odd number.
     return ans;
 }
 

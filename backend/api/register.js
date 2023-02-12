@@ -21,26 +21,13 @@ router.route("/")
     .post((req, res) => {
         console.log("Here is the final registering details: ", req.body)
 
-        // const newUser=new userModel(req.body);
-
-        
-        // userModel.find({_id: username}, (err, doc) => {
-        //     const newUser=new userModel({
-        //         _id: username,
-        //         fName: fName,
-        //         sName: sName,
-        //         password: password
-        //     })
-        //     newUser.save(err => {
-        //         if (err) {
-        //             console.log("There was an error registering.");
-        //         }
-        //         else {
-        //             console.log("User saved successfully.");
-        //             res.send(200)
-        //         }
-        //     })
-        // })
+        const newUser=new userModel(req.body);
+        newUser.save(err=> {
+            if (err) console.log("There has been an error.")
+            else {
+                console.log("User saved successfully.");
+            }
+        })
     });
 
 export default router

@@ -5,17 +5,15 @@ import RSA from "./RSA";
 
 function Register2 (props) {
     const [dPass, setDPass] = React.useState("")
-
     function handleSubmission(event) {
         event.preventDefault();
         const [n, e] = RSA(dPass);
         const newUser = {
+            _id: props.username,
             fName: props.fName,
             lName: props.lName,
-            username: props.username,
             password: props.password,
-            n: n,
-            e: e
+            publicKey: [n, e]
         }
         console.log("Here is the data to be sent to the backend: ", newUser)
         axios.post("http://localhost:5000/register", newUser)

@@ -17,7 +17,7 @@
 }
 
 .passvalue-items {
-    background-color: rgba(238, 242, 230, 0.985);;
+    background-color: rgba(238, 242, 230, 0.985);
     font-family: 'Courier New', Courier, monospace;
 }
 
@@ -29,4 +29,94 @@
 
 .passvalue-items a:hover{
     text-decoration: underline;
+}
+
+.decrypt-container {
+    display: flex;
+    text-align: center;
+    padding: 10px 10px;
+    border-radius: 12px;
+    background-color: rgba(210, 235, 168, 0.985);
+    justify-content: center;
+    flex-direction: column;
+    max-width: 200px;
+    position: fixed;
+    right: 10px;
+}
+
+.decrypt-container p {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.decrypt-container input {
+    margin-bottom: 8px;
+}
+
+.decrypt-container button {
+    margin: 8px 0px;
+}
+
+.decrypt-container button:hover {
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.decrypt-container input:focus {
+    border: none;
+}
+
+.decrypt-container input, .decrypt-container button {
+    border-radius: 5px;
+    border-style: none;
+    padding: 6px 5px;
+}
+
+.add-new {
+    position: fixed;
+}
+
+.add-new form {
+    background-color: rgba(210, 235, 168, 0.985);
+    border-radius: 12px;
+    margin-top: 15px;
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.add-new form input, .add-new form button {
+    border-radius: 5px;
+    border-style: none;
+    padding: 6px 5px;
+}
+
+.add-new form button:hover {
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.add-new p {
+    margin-top: 4px;
+    margin-bottom: 5px;
+}
+
+.add-new input {
+    margin-bottom: 10px;
+}
+
+.add-new-button {
+    border-radius: 12px;
+    background-color: rgba(210, 235, 168, 0.985);
+    padding: 20px 40px;
+    border: none;
+}
+
+.add-new-button:hover {
+    cursor: pointer;
+    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}
+
+.add-new-hide {
+    visibility: hidden;
 }
