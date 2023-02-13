@@ -1,20 +1,39 @@
 import React, {useState} from "react";
+import axios from "axios";
+import { mToC, cToM } from "./RSA";
 
-function AddNew(event) {
-    const [websitename, setWebsitename] = useState("")
-    const [username, setUsername] = useState("")
+function AddNew() {
+    const [title, setTitle] = useState("")
+    const [URL, setURL] = useState("")
     const [password, setPassword] = useState("")
-    const [url, setURL] = useState("")
+    const [username, setUsername] = useState("")
+    const [email, setEmail]=useState("")
 
-    function handleSubmit(event) {
+    function handleSubmission(event) {
         event.preventDefault();
+        const newPass= {
+            title: title,
+            owner: localStorage.getItem("username"),
+            URL: URL,
+            password: mToC(password),
+            username: username,
+            email: email
+        }
+        axios.post("http://localhost:5000/passwords", newPass)
+            .then (res=>{
+                console.log("password added successfull.")
+            })
+            .catch(err=>{
+                console.log("There was an error: ", err)
+            })
+        console.log("Here is the decrypted password: ", cToM(localStorage.getItem("c"), "abcd"))
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmission}>
             <p>Website name:</p>
             <input
-                onChange={(event)=>setWebsitename(event.target.value)}
+                onChange={(event)=>setTitle(event.target.value)}
                 placeholder="Amazon">
             </input>
 
@@ -34,6 +53,12 @@ function AddNew(event) {
             <input
                 onChange={(event)=>setURL(event.target.value)}
                 placeholder="www.amazon.in">
+            </input>
+
+            <p>Registered email-id</p>
+            <input
+                onChange={(event)=>setEmail(event.target.value)}
+                placeholder="abc@gmail.com">
             </input>
 
             <button type="submit">Submit</button>

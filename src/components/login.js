@@ -3,6 +3,7 @@ import "./css/login.css"
 import axios from "axios";
 import Navbar from "./navbar";
 
+
 function Login(props) {
     const [password, setPass]=React.useState("");
     const [username, setUsername]=React.useState("");
@@ -12,7 +13,11 @@ function Login(props) {
         
         axios.post("http://localhost:5000/login", {username: username, password: password})
             .then(res=> {
-                if (res.status===201) props.onSubmission(username);
+                if (res.status===201) {
+                    localStorage.setItem("username", username);
+                    localStorage.setItem("n", res.data[0])
+                    localStorage.setItem("e", res.data[1])
+                }
                 else {
                     setPass("");
                     setUsername("");

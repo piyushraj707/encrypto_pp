@@ -18,7 +18,7 @@ router.route("/")
         const newPass = new passModel({
             title: req.body.title,
             owner: req.body.owner,
-            url: req.body.url,
+            URL: req.body.URL,
             password: req.body.password,
             username: req.body.username,
             email: req.body.email

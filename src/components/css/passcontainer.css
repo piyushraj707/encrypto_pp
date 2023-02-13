@@ -40,7 +40,7 @@
     justify-content: center;
     flex-direction: column;
     max-width: 200px;
-    position: fixed;
+    position: absolute;
     right: 10px;
 }
 
@@ -73,7 +73,7 @@
 }
 
 .add-new {
-    position: fixed;
+    position: absolute;
 }
 
 .add-new form {

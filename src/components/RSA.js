@@ -1,6 +1,36 @@
 // import bigInt from "big-integer";
 const bigInt = require("big-integer")
 
+export function mToC(msg) { //message-to-cipher function
+    const n=bigInt(localStorage.getItem("n"));
+    const e=bigInt(localStorage.getItem("e"));
+    var c=bigInt(toBigInt(msg));
+    c=c.modPow(e, n);
+    localStorage.setItem("c", c.toString())
+    return c.toString();
+}
+
+function fromBigInt(m) {
+    const len=(Math.floor(m.length/2))
+    var ans="";
+    for (var i =0; i<len; i++) {
+        var temp=m[2*i]+m[2*i+1];
+        temp=parseInt(temp)+23;
+        ans+=String.fromCharCode(temp);
+    }
+    return ans;
+}
+
+export function cToM(cipher, prvKey) {//decryption key
+    cipher=bigInt(cipher);
+    const n=bigInt(localStorage.getItem("n"));
+    const d=bigInt(toBigInt(prvKey)+"1");
+    var m=cipher.modPow(d, n);
+    console.log("decrypted msg", m.toString());
+    m=fromBigInt(m.toString());
+    return m;
+}
+
 function toNum(letter) {
     var ans=letter.charCodeAt(0);
     ans=ans-23;
@@ -16,7 +46,6 @@ function toBigInt (dPass) {
     for (var i=0; i<dPass.length; i++) {
         ans+=toNum(dPass[i])
     }
-    ans=ans+"1"; //make sure that the key is an odd number.
     return ans;
 }
 
@@ -47,7 +76,7 @@ function generateLargePrime(numDigits) {
 function RSA(dPass) {
     const lenPrime=50;
     const checkLimit=20;
-    const d=bigInt(toBigInt(dPass));
+    const d=bigInt(toBigInt(dPass)+"1");  //make sure that the key is an odd number.
 
     var p = generateLargePrime(lenPrime);
     var q = generateLargePrime(lenPrime);
@@ -76,7 +105,7 @@ function RSA(dPass) {
     return [n.toString(), e.toString()];
 }
 
-// var fff=RSA("adsfadsasdfb")
+// var fff=mToC("adsfadsasdfb")
 // console.log(fff)
 
 export default RSA;

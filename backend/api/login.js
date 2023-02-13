@@ -15,7 +15,10 @@ router.route("/")
             else if (doc[0]) {
                 console.log("user Found.");
                 if (password===doc[0].password) {
-                    res.sendStatus(201)
+                    res.status(201)
+                    res.send(doc[0].publicKey)
+                    // res.sendStatus(201)
+                    // console.log(doc)
                     console.log("You are successfully logged in.");
                 }
                 else {

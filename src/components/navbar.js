@@ -1,10 +1,15 @@
 import React from "react";
 import "./css/navbar.css"
 
-function navBar(props) {
+function navBar() {
     return (
         <nav>
-            You are logged in as {props.owner};
+            <div>
+                You are logged in as {localStorage.getItem("username")};
+            </div>
+            <button onClick={() => localStorage.clear()}>
+                Logout
+            </button>
         </nav>
     )
 }
