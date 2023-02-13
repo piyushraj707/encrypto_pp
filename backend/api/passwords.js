@@ -38,7 +38,7 @@ router.route("/find")
     .post((req, res) => {
         passModel.find({owner: req.body.owner}, function (err, data) {
             res.send(data)
-            console.log("Here is the data for ", req.body.username, data);
+            console.log("Here is the data for ", req.body.owner, data);
         })
     })
 

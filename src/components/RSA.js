@@ -105,7 +105,4 @@ function RSA(dPass) {
     return [n.toString(), e.toString()];
 }
 
-// var fff=mToC("adsfadsasdfb")
-// console.log(fff)
-
 export default RSA;

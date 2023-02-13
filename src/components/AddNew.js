@@ -19,9 +19,10 @@ function AddNew() {
             username: username,
             email: email
         }
+        console.log(newPass)
         axios.post("http://localhost:5000/passwords", newPass)
             .then (res=>{
-                console.log("password added successfull.")
+                console.log("password added successfully.")
             })
             .catch(err=>{
                 console.log("There was an error: ", err)
