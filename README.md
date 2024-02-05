@@ -1,3 +1,57 @@
+# Introduction
+Remembering passwords of so many different websites can be overwhelming. They can be saved in some note taking app but they are not encrypted and can be accessed by anyone. Online Password Managers can be used but most of them requires you to carry a very long string of computer-generated characters which can not be rememeberd and also can be recovered if forgotten.\
+This password manager solves this problem by letting the user to choose its own private key to decrypt passwords and they can be accessed from anywhere.
+
+# UI of the app
+### Add a new entry
+![Add New Entry](./public/imgs/addNew.png)
+
+### Show all the entries (Encrypted)
+![Encrypted Passwords](./public/imgs/encrypted_pass.png)
+
+### Show all the entries (Decrypted)
+![Decrypted Passwords](./public/imgs/decrypted_pass.png)
+
+
+# How the encryption-decryption work?
+Encryption-decryption is based on **RSA algorithm**.
+### Steps for creating encryption and decrption keys.
+1. Get private/decryption key (say $d$) from user when the user is registering for the first time.
+2. Generate two large prime numbers p and q (~100 digits each) such that $gcd(d, (p-1)(q-1)) == 1$
+3. Encryption/public key can be generated using the relation: $ de \equiv 1 (mod(p-1)(q-1)) $. In other words, encryption key $e$ is an inverse of $d$ modulo $(p-1)(q-1)$.
+4. While making sure $p$ and $q$ are individually lost, publc keys $n = pq$ and $e$ are stored in the user's database.
+
+### Steps for encryption and decryption of messages.
+1. Text passwords are converted to numeric forms (say m).
+2. Encrypted password $c$ is created as: $c = m^e (mod\ n)$ and then stored to the database.
+3. For decryption, m is recovered from $c$ using the user-provided decryption key, $d$ as: $ c^d \equiv  (m^e)^d \equiv  m^{1+k(p-1)(q-1)} \equiv  \ m (mod\ n)$.
+
+
+### Example
+1. Suppose the user chooses $d = 15$ as the decryption key.
+2. Two prime numbers are generated - $p=17$ and $q = 23$. Note that $gcd(d, (p-1)(q-1)) = gcd(15, 352) = 1 $.
+3. Encryption key is generated as $e \equiv d^{-1}(mod\ (p-1)(q-1)) \equiv 15^{-1}(mod \ 352) = 47 $.
+4. Public key $n = pq = 17*23 = 391$ is generated and stored to the database. We don't need p and q from now on so they are lost to make sure that the decryption key cannot be generated.
+4. Suppose the password to be encrypted is $m = 123 $
+5. Create and save the encrypted password as: $c = m^e (mod\ n) = 123^{47} (mod \ 391) = 98$.
+6. To recover the encrypted password: $ m = c^d (mod\ n) = 98 ^ {15} ( mod \ 391)  = 123 $. Thus we have successfully recovered the original password.
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
