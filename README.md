@@ -24,7 +24,7 @@ Encryption-decryption is based on **RSA algorithm**.
 ### Steps for encryption and decryption of messages.
 1. Text passwords are converted to numeric forms (say m).
 2. Encrypted password $c$ is created as: $c = m^e (mod\ n)$ and then stored to the database.
-3. For decryption, m is recovered from $c$ using the user-provided decryption key, $d$ as: $ c^d \equiv  (m^e)^d \equiv  m^{1+k(p-1)(q-1)} \equiv  \ m (mod\ n)$.
+3. For decryption, m is recovered from $c$ using the user-provided decryption key, $d$ as: $c^d \equiv  (m^e)^d \equiv  m^{1+k(p-1)(q-1)} \equiv  \ m (mod\ n)$.
 
 
 ### Example
@@ -34,7 +34,7 @@ Encryption-decryption is based on **RSA algorithm**.
 4. Public key $n = pq = 17*23 = 391$ is generated and stored to the database. We don't need p and q from now on so they are lost to make sure that the decryption key cannot be generated.
 4. Suppose the password to be encrypted is $m = 123 $
 5. Create and save the encrypted password as: $c = m^e (mod\ n) = 123^{47} (mod \ 391) = 98$.
-6. To recover the encrypted password: $ m = c^d (mod\ n) = 98 ^ {15} ( mod \ 391)  = 123 $. Thus we have successfully recovered the original password.
+6. To recover the encrypted password: $m = c^d (mod\ n) = 98 ^ {15} ( mod \ 391)  = 123$. Thus we have successfully recovered the original password.
 
 \
 \
