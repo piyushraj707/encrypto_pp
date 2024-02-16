@@ -18,7 +18,7 @@ Encryption-decryption is based on **RSA algorithm**.
 ### Steps for creating encryption and decrption keys.
 1. Get private/decryption key (say $d$) from user when the user is registering for the first time.
 2. Generate two large prime numbers p and q (~100 digits each) such that $gcd(d, (p-1)(q-1)) == 1$
-3. Encryption/public key can be generated using the relation: $ de \equiv 1 (mod(p-1)(q-1)) $. In other words, encryption key $e$ is an inverse of $d$ modulo $(p-1)(q-1)$.
+3. Encryption/public key can be generated using the relation: $de \equiv 1 (mod(p-1)(q-1))$. In other words, encryption key $e$ is an inverse of $d$ modulo $(p-1)(q-1)$.
 4. While making sure $p$ and $q$ are individually lost, publc keys $n = pq$ and $e$ are stored in the user's database.
 
 ### Steps for encryption and decryption of messages.
